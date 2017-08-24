@@ -1,4 +1,6 @@
 
+![](img/card.png)
+
 `msgxtractr` : Read Outlook '.msg' Files
 
 A 'reticulate' wrapper to the Python 'ExtractMessage' module.
@@ -61,7 +63,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Wed Aug 23 07:25:00 2017"
+    ## [1] "Thu Aug 24 09:08:14 2017"
 
 ``` r
 test_dir("tests/")
