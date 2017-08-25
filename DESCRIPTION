@@ -14,6 +14,7 @@ Description: 'Microsoft' 'Outlook' messages can be saves in '.msg' files. Tools 
     from these files.
 URL: https://github.com/hrbrmstr/msgxtractr
 BugReports: https://github.com/hrbrmstr/msgxtractr/issues
+SystemRequirements: C++11
 NeedsCompilation: Yes
 License: AGPL
 Suggests:
