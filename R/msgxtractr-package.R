@@ -3,5 +3,6 @@
 #' @name msgxtractr
 #' @docType package
 #' @author Bob Rudis (bob@@rud.is)
-#' @import reticulate anytime
+#' @useDynLib msgxtractr
+#' @importFrom Rcpp sourceCpp
 NULL

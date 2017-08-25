@@ -1,13 +1,18 @@
 Package: msgxtractr
 Type: Package
 Title: Read Outlook '.msg' Files
-Version: 0.1.0
+Version: 0.2.0
 Date: 2017-08-23
-Author: Bob Rudis (bob@rud.is)
+Authors@R: c(person("Bob", "Rudis", email = "bob@rud.is", role = c("aut", "cre")),
+             person("Ariya", "Hidayat", email = "ariya@kde.org", role = "aut", 
+                     comment = "POLE library"))
 Maintainer: Bob Rudis <bob@rud.is>
-Description: A 'reticulate' wrapper to the Python 'ExtractMessage' module.
+Description: 'Microsoft' 'Outlook' messages can be saves in '.msg' files. Tools are
+    provided that enable extraction of metadata, envelope, headers, body and attachments
+    from these files.
 URL: https://github.com/hrbrmstr/msgxtractr
 BugReports: https://github.com/hrbrmstr/msgxtractr/issues
+NeedsCompilation: Yes
 License: AGPL
 Suggests:
     testthat,
@@ -15,6 +20,6 @@ Suggests:
 Depends:
     R (>= 3.2.0)
 Imports:
-    reticulate,
-    anytime
+    Rcpp
 RoxygenNote: 6.0.1
+LinkingTo: Rcpp

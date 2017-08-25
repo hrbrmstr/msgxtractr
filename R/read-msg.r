@@ -1,28 +1,30 @@
-#' Read an Outlook '.msg' file into a data frame
+#' Read in a '.msg' file
 #'
+#' @md
 #' @param path path to '.msg' file
-#' @return data frame
+#' @return a `list` of extracted fields and metadata
 #' @export
 #' @examples
 #' read_msg(system.file("extdata/unicode.msg", package="msgxtractr"))
 read_msg <- function(path) {
 
   path <- path.expand(path)
-  if (!file.exists(path)) stop(sprintf("'%s' not found.", path), call.=FALSE)
+  if (!file.exists(path)) stop("File not found.", call.=FALSE)
 
-  msg <- .msg$Message(path)
+  x <- int_read_msg(path)
 
-  data.frame(
-    to = msg$to,
-    cc = msg$cc,
-    subject = msg$subject,
-    date = anytime::anytime(msg$date),
-    body = iconv(msg$body, from="UTF-7"),
-    stringsAsFactors=FALSE
-  ) -> xdf
+  names(x$values) <- x$keys
 
-  class(xdf) <- c("tbl_df", "tbl", "data.frame")
+  x <- x$values
 
-  xdf
+  list(
+    headers = process_headers(x),
+    sender = process_sender(x),
+    recipients = process_recipients(x),
+    subject = process_subject(x),
+    body = process_body(x),
+    attachments = process_attachments(x),
+    display_envelope = process_envelope(x)
+  )
 
 }

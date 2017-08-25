@@ -2,7 +2,7 @@
 % Please edit documentation in R/read-msg.r
 \name{read_msg}
 \alias{read_msg}
-\title{Read an Outlook '.msg' file into a data frame}
+\title{Read in a '.msg' file}
 \usage{
 read_msg(path)
 }
@@ -10,10 +10,10 @@ read_msg(path)
 \item{path}{path to '.msg' file}
 }
 \value{
-data frame
+a \code{list} of extracted fields and metadata
 }
 \description{
-Read an Outlook '.msg' file into a data frame
+Read in a '.msg' file
 }
 \examples{
 read_msg(system.file("extdata/unicode.msg", package="msgxtractr"))
