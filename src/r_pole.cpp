@@ -9,22 +9,23 @@ using namespace Rcpp;
 #include <cstring>
 
 #include "pole.h"
+#include "utf8.h"
 
 std::string MSG_UTF16LE = std::string("001F");
 std::string MSG_BINARY = std::string("0102");
 std::string MSG_PROPERTIES = std::string("properties_version1.0");
 
-template <typename T>
-std::string toUTF8(const std::basic_string<T, std::char_traits<T>, std::allocator<T> >& source) {
-
-  std::string result;
-
-  std::wstring_convert<std::codecvt_utf8_utf16<T>, T> convertor;
-  result = convertor.to_bytes(source);
-
-  return result;
-
-}
+// template <typename T>
+// std::string toUTF8(const std::basic_string<T, std::char_traits<T>, std::allocator<T> >& source) {
+//
+//   std::string result;
+//
+//   std::wstring_convert<std::codecvt_utf8_utf16<T>, T> convertor;
+//   result = convertor.to_bytes(source);
+//
+//   return result;
+//
+// }
 
 bool ends_with(const std::string& a, const std::string& b) {
   if (b.size() > a.size()) return false;
@@ -74,7 +75,17 @@ List visit(int indent, POLE::Storage* storage, std::string path) {
           dest[wlen] = 0;
 
           keys.push_back(fullname);
-          vals.push_back(toUTF8(std::u16string(dest)));
+
+          std::vector<unsigned char> utf8result;
+          utf8::utf16to8(dest, dest + wlen, std::back_inserter(utf8result));
+          vals.push_back(std::string(utf8result.begin(), utf8result.end()));
+
+          // unsigned short utf16string[] = {0x41, 0x0448, 0x65e5, 0xd834, 0xdd1e};
+          // vector<unsigned char> utf8result;
+          // utf16to8(utf16string, utf16string + 5, back_inserter(utf8result));
+          // assert (utf8result.size() == 10);
+
+          //vals.push_back(toUTF8(std::u16string(dest)));
 
           // std::cout << "===============>" << toUTF8(std::u16string(dest));
 

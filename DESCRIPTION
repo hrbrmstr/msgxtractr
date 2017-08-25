@@ -3,9 +3,11 @@ Type: Package
 Title: Read Outlook '.msg' Files
 Version: 0.2.0
 Date: 2017-08-23
-Authors@R: c(person("Bob", "Rudis", email = "bob@rud.is", role = c("aut", "cre")),
-             person("Ariya", "Hidayat", email = "ariya@kde.org", role = "aut", 
-                     comment = "POLE library"))
+Authors@R: c(
+      person("Bob", "Rudis", email = "bob@rud.is", role = c("aut", "cre")),
+      person("Ariya", "Hidayat", email = "ariya@kde.org", role = "aut", comment = "POLE library"),
+      person("Nemanja", "Trifunovic", role = "aut", comment = "UTF-8 helpers <https://github.com/nemtrif/utfcpp>")
+    )
 Maintainer: Bob Rudis <bob@rud.is>
 Description: 'Microsoft' 'Outlook' messages can be saves in '.msg' files. Tools are
     provided that enable extraction of metadata, envelope, headers, body and attachments
