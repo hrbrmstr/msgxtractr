@@ -6,6 +6,7 @@ using namespace Rcpp;
 #include <iostream>
 #include <locale>
 #include <codecvt>
+#include <cstring>
 
 #include "pole.h"
 
