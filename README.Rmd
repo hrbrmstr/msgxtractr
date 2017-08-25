@@ -1,6 +1,10 @@
 ---
 output: rmarkdown::github_document
 ---
+[![Build Status](https://travis-ci.org/hrbrmstr/msgxtractr.svg?branch=master)](https://travis-ci.org/hrbrmstr/msgxtractr)
+
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/hrbrmstr/msgxtractr?branch=master&svg=true)](https://ci.appveyor.com/project/hrbrmstr/msgxtractr)
+
 
 ![](img/card.png)
 

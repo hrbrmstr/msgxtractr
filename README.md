@@ -1,4 +1,8 @@
 
+[![Build Status](https://travis-ci.org/hrbrmstr/msgxtractr.svg?branch=master)](https://travis-ci.org/hrbrmstr/msgxtractr)
+
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/hrbrmstr/msgxtractr?branch=master&svg=true)](https://ci.appveyor.com/project/hrbrmstr/msgxtractr)
+
 ![](img/card.png)
 
 `msgxtractr` : Read Outlook '.msg' Files
@@ -90,13 +94,13 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Fri Aug 25 17:49:32 2017"
+    ## [1] "Fri Aug 25 18:38:39 2017"
 
 ``` r
 test_dir("tests/")
 ```
 
     ## testthat results ========================================================================================================
-    ## OK: 0 SKIPPED: 0 FAILED: 0
+    ## OK: 3 SKIPPED: 0 FAILED: 0
     ## 
     ## DONE ===================================================================================================================
