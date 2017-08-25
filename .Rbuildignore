@@ -10,3 +10,5 @@
 ^doc$
 ^img$
 ^appveyor\.yml$
+^codecov\.yml$
+^CONDUCT\.md$

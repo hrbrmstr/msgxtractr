@@ -1,7 +1,5 @@
 
-[![Build Status](https://travis-ci.org/hrbrmstr/msgxtractr.svg?branch=master)](https://travis-ci.org/hrbrmstr/msgxtractr)
-
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/hrbrmstr/msgxtractr?branch=master&svg=true)](https://ci.appveyor.com/project/hrbrmstr/msgxtractr)
+[![Build Status](https://travis-ci.org/hrbrmstr/msgxtractr.svg?branch=master)](https://travis-ci.org/hrbrmstr/msgxtractr) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/hrbrmstr/msgxtractr?branch=master&svg=true)](https://ci.appveyor.com/project/hrbrmstr/msgxtractr) [![Coverage Status](https://img.shields.io/codecov/c/github//master.svg)](https://codecov.io/github/?branch=master)
 
 ![](img/card.png)
 
@@ -94,7 +92,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Fri Aug 25 18:38:39 2017"
+    ## [1] "Fri Aug 25 18:42:51 2017"
 
 ``` r
 test_dir("tests/")
@@ -104,3 +102,7 @@ test_dir("tests/")
     ## OK: 3 SKIPPED: 0 FAILED: 0
     ## 
     ## DONE ===================================================================================================================
+
+### Code of Conduct
+
+Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
