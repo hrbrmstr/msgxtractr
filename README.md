@@ -9,7 +9,7 @@
 
 The following functions are implemented:
 
--   `read_msg` Read an Outlook '.msg' file into a data frame
+-   `read_msg`: Read in an Outlook '.msg' file
 
 ### Installation
 
@@ -92,7 +92,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Fri Aug 25 18:44:36 2017"
+    ## [1] "Fri Aug 25 18:45:31 2017"
 
 ``` r
 test_dir("tests/")

@@ -1,4 +1,4 @@
-#' Read in a '.msg' file
+#' Read in an Outlook '.msg' file
 #'
 #' @md
 #' @param path path to '.msg' file

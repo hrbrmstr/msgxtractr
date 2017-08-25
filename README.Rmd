@@ -13,7 +13,7 @@ output: rmarkdown::github_document
 
 The following functions are implemented:
 
-- `read_msg`	Read an Outlook '.msg' file into a data frame
+- `read_msg`:	Read in an Outlook '.msg' file
 
 ### Installation
 
