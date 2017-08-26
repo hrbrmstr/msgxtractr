@@ -1,8 +1,6 @@
 
 [![Build Status](https://travis-ci.org/hrbrmstr/msgxtractr.svg?branch=master)](https://travis-ci.org/hrbrmstr/msgxtractr) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/hrbrmstr/msgxtractr?branch=master&svg=true)](https://ci.appveyor.com/project/hrbrmstr/msgxtractr) [![codecov](https://codecov.io/gh/hrbrmstr/msgxtractr/branch/master/graph/badge.svg)](https://codecov.io/gh/hrbrmstr/msgxtractr)
 
-![](img/card.png)
-
 `msgxtractr` : Read Outlook '.msg' Files
 
 'Microsoft' 'Outlook' messages can be saved in '.msg' files. Tools are provided that enable extraction of metadata, envelope, headers, body and attachments from these files.
@@ -92,7 +90,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Fri Aug 25 22:07:49 2017"
+    ## [1] "Sat Aug 26 06:07:23 2017"
 
 ``` r
 test_dir("tests/")

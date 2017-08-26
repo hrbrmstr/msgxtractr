@@ -5,8 +5,6 @@ output: rmarkdown::github_document
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/hrbrmstr/msgxtractr?branch=master&svg=true)](https://ci.appveyor.com/project/hrbrmstr/msgxtractr)
 [![codecov](https://codecov.io/gh/hrbrmstr/msgxtractr/branch/master/graph/badge.svg)](https://codecov.io/gh/hrbrmstr/msgxtractr)
 
-![](img/card.png)
-
 `msgxtractr` : Read Outlook '.msg' Files
 
 'Microsoft' 'Outlook' messages can be saved in '.msg' files. Tools are provided that enable extraction of metadata, envelope, headers, body and attachments from these files.
