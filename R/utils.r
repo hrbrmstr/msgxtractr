@@ -1,4 +1,9 @@
 msg_fields <- list(
+  CreationTime = "_3007",
+  LastModificationTime = "_3008",
+  LastModifierName = "_3FFA",
+  OriginalSenderEmailAddress = "_0067",
+  MessageBodyHtml = "_1013",
   MessageClass = "_001A",
   Subject = "_0037",
   ReceivedByName = "_0040",

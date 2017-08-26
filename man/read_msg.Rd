@@ -17,4 +17,7 @@ Read in an Outlook '.msg' file
 }
 \examples{
 read_msg(system.file("extdata/unicode.msg", package="msgxtractr"))
+read_msg(system.file("extdata/TestMessage-ansi.msg", package="msgxtractr"))
+read_msg(system.file("extdata/TestMessage-default.msg", package="msgxtractr"))
+read_msg(system.file("extdata/TestMessage-unicode.msg", package="msgxtractr"))
 }

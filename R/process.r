@@ -1,3 +1,11 @@
+process_times <- function(x) {
+  list(
+    creation_time = unlist(unname(x[grep(msg_fields$CreationTime, names(x), value=TRUE)])),
+    last_mod_time = unlist(unname(x[grep(msg_fields$LastModificationTime, names(x), value=TRUE)])),
+    last_mod_name = unlist(unname(x[grep(msg_fields$LastModifierName, names(x), value=TRUE)]))
+  )
+
+}
 process_recipients <- function(x) {
   y <-  grep("/__recip_version1.0_", names(x), value=TRUE)
   z <- sapply(y, strsplit, split = "/", fixed=TRUE, USE.NAMES = FALSE)
@@ -24,9 +32,9 @@ process_attachments <- function(x) {
       mime = unlist(unname(x[grep(msg_fields$AttachMIME, names(attachmnt), value=TRUE)])),
       content = unlist(unname(x[grep(msg_fields$AttachContent, names(attachmnt), value=TRUE)]))
     ) -> res
-     extension <- unlist(unname(x[grep(msg_fields$AttachExtension, names(attachmnt), value=TRUE)]))
-     if (!is.null(extension)) res$extension <- extension
-     res
+    extension <- unlist(unname(x[grep(msg_fields$AttachExtension, names(attachmnt), value=TRUE)]))
+    if (!is.null(extension)) res$extension <- extension
+    res
   })
 }
 
@@ -76,5 +84,10 @@ process_headers <- function(x) {
 }
 
 process_body <- function(x) {
-  unlist(unname(x[grep(msg_fields$MessageBody, names(x), value=TRUE)]))
+  list(
+    text = unlist(unname(x[grep(msg_fields$MessageBody, names(x), value=TRUE)])),
+    html = unlist(unname(x[grep(msg_fields$MessageBodyHtml, names(x), value=TRUE)]))
+  ) -> res
+  if (!is.null(res$html)) res$html <- readBin(res$html, "character")
+  res
 }

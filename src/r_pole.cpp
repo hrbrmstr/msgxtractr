@@ -13,6 +13,7 @@ using namespace Rcpp;
 
 std::string MSG_UTF16LE = std::string("001F");
 std::string MSG_BINARY = std::string("0102");
+std::string MSG_TIME = std::string("0040");
 std::string MSG_PROPERTIES = std::string("properties_version1.0");
 
 bool ends_with(const std::string& a, const std::string& b) {
@@ -69,6 +70,11 @@ List visit(POLE::Storage* storage, std::string path) {
           delete[] dest;
 
         } else if (ends_with(fullname, MSG_BINARY)) { // binary content
+
+          keys.push_back(fullname);
+          vals.push_back(RawVector(buf, buf+read));
+
+        } else if (ends_with(fullname, MSG_TIME)) { // time content
 
           keys.push_back(fullname);
           vals.push_back(RawVector(buf, buf+read));

@@ -6,6 +6,9 @@
 #' @export
 #' @examples
 #' read_msg(system.file("extdata/unicode.msg", package="msgxtractr"))
+#' read_msg(system.file("extdata/TestMessage-ansi.msg", package="msgxtractr"))
+#' read_msg(system.file("extdata/TestMessage-default.msg", package="msgxtractr"))
+#' read_msg(system.file("extdata/TestMessage-unicode.msg", package="msgxtractr"))
 read_msg <- function(path) {
 
   path <- path.expand(path)
@@ -24,7 +27,8 @@ read_msg <- function(path) {
     subject = process_subject(x),
     body = process_body(x),
     attachments = process_attachments(x),
-    display_envelope = process_envelope(x)
+    display_envelope = process_envelope(x),
+    times = process_times(x)
   )
 
 }
