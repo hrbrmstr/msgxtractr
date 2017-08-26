@@ -9,7 +9,7 @@ Authors@R: c(
       person("Nemanja", "Trifunovic", role = "aut", comment = "UTF-8 helpers <https://github.com/nemtrif/utfcpp>")
     )
 Maintainer: Bob Rudis <bob@rud.is>
-Description: 'Microsoft' 'Outlook' messages can be saves in '.msg' files. Tools are
+Description: 'Microsoft' 'Outlook' messages can be saved in '.msg' files. Tools are
     provided that enable extraction of metadata, envelope, headers, body and attachments
     from these files.
 URL: https://github.com/hrbrmstr/msgxtractr

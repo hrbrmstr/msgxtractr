@@ -9,7 +9,7 @@ output: rmarkdown::github_document
 
 `msgxtractr` : Read Outlook '.msg' Files
 
-'Microsoft' 'Outlook' messages can be saves in '.msg' files. Tools are provided that enable extraction of metadata, envelope, headers, body and attachments from these files.
+'Microsoft' 'Outlook' messages can be saved in '.msg' files. Tools are provided that enable extraction of metadata, envelope, headers, body and attachments from these files.
 
 The following functions are implemented:
 

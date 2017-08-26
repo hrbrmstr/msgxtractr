@@ -5,7 +5,7 @@
 
 `msgxtractr` : Read Outlook '.msg' Files
 
-'Microsoft' 'Outlook' messages can be saves in '.msg' files. Tools are provided that enable extraction of metadata, envelope, headers, body and attachments from these files.
+'Microsoft' 'Outlook' messages can be saved in '.msg' files. Tools are provided that enable extraction of metadata, envelope, headers, body and attachments from these files.
 
 The following functions are implemented:
 
@@ -92,7 +92,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Fri Aug 25 18:45:31 2017"
+    ## [1] "Fri Aug 25 22:07:49 2017"
 
 ``` r
 test_dir("tests/")
