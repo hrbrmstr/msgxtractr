@@ -1,4 +1,5 @@
 #include <Rcpp.h>
+
 using namespace Rcpp;
 
 #include <sstream>
@@ -14,24 +15,12 @@ std::string MSG_UTF16LE = std::string("001F");
 std::string MSG_BINARY = std::string("0102");
 std::string MSG_PROPERTIES = std::string("properties_version1.0");
 
-// template <typename T>
-// std::string toUTF8(const std::basic_string<T, std::char_traits<T>, std::allocator<T> >& source) {
-//
-//   std::string result;
-//
-//   std::wstring_convert<std::codecvt_utf8_utf16<T>, T> convertor;
-//   result = convertor.to_bytes(source);
-//
-//   return result;
-//
-// }
-
 bool ends_with(const std::string& a, const std::string& b) {
-  if (b.size() > a.size()) return false;
-  return std::equal(a.begin() + a.size() - b.size(), a.end(), b.begin());
+  if (b.size() > a.size()) return false ;
+  return std::equal(a.begin() + a.size() - b.size(), a.end(), b.begin()) ;
 }
 
-List visit(int indent, POLE::Storage* storage, std::string path) {
+List visit(POLE::Storage* storage, std::string path) {
 
   std::vector<std::string> keys;
   List vals;
@@ -46,11 +35,7 @@ List visit(int indent, POLE::Storage* storage, std::string path) {
     std::string name = *it;
     std::string fullname = path + name;
 
-    // for (int j = 0; j < indent; j++) std::cout << "    " ;
-
     POLE::Stream* ss = new POLE::Stream(storage, fullname);
-
-    // std::cout << fullname;
 
     if (!(storage->isDirectory(fullname))) {
 
@@ -61,6 +46,8 @@ List visit(int indent, POLE::Storage* storage, std::string path) {
       if (read > 0) {
 
         if (ends_with(fullname, MSG_UTF16LE)) { // UTF-16LE string
+
+          // all this to make the string content useful
 
           int wlen = (ss->size())/2;
           char16_t *dest = new char16_t[wlen + 1];
@@ -79,15 +66,6 @@ List visit(int indent, POLE::Storage* storage, std::string path) {
           utf8::utf16to8(dest, dest + wlen, std::back_inserter(utf8result));
           vals.push_back(std::string(utf8result.begin(), utf8result.end()));
 
-          // unsigned short utf16string[] = {0x41, 0x0448, 0x65e5, 0xd834, 0xdd1e};
-          // vector<unsigned char> utf8result;
-          // utf16to8(utf16string, utf16string + 5, back_inserter(utf8result));
-          // assert (utf8result.size() == 10);
-
-          //vals.push_back(toUTF8(std::u16string(dest)));
-
-          // std::cout << "===============>" << toUTF8(std::u16string(dest));
-
           delete[] dest;
 
         } else if (ends_with(fullname, MSG_BINARY)) { // binary content
@@ -104,8 +82,6 @@ List visit(int indent, POLE::Storage* storage, std::string path) {
 
       }
 
-      // std::cout << std::endl;
-
       if (buf) free(buf);
 
     }
@@ -114,7 +90,7 @@ List visit(int indent, POLE::Storage* storage, std::string path) {
 
     if (storage->isDirectory(fullname)) {
 
-      List res = visit(indent+1, storage, fullname + "/");
+      List res = visit(storage, fullname + "/");
 
       std::vector<std::string> rk = res["keys"];
 
@@ -152,7 +128,7 @@ List int_read_msg(std::string path) {
   storage->open();
 
   if (storage->result() == POLE::Storage::Ok) {
-    return(visit(0, storage, "/"));
+    return(visit(storage, "/"));
   } else {
     return(wrap(NULL));
   }

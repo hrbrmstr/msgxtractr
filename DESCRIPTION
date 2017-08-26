@@ -5,8 +5,8 @@ Version: 0.2.0
 Date: 2017-08-23
 Authors@R: c(
       person("Bob", "Rudis", email = "bob@rud.is", role = c("aut", "cre")),
-      person("Ariya", "Hidayat", email = "ariya@kde.org", role = "aut", comment = "POLE library"),
-      person("Nemanja", "Trifunovic", role = "aut", comment = "UTF-8 helpers <https://github.com/nemtrif/utfcpp>")
+      person("Ariya", "Hidayat", email = "ariya@kde.org", role = c("ctb", "cph"), comment = "POLE library"),
+      person("Nemanja", "Trifunovic", role = c("ctb", "cph"), comment = "UTF-8 helpers <https://github.com/nemtrif/utfcpp>")
     )
 Maintainer: Bob Rudis <bob@rud.is>
 Description: 'Microsoft' 'Outlook' messages can be saved in '.msg' files. Tools are
@@ -15,7 +15,8 @@ Description: 'Microsoft' 'Outlook' messages can be saved in '.msg' files. Tools 
 URL: https://github.com/hrbrmstr/msgxtractr
 BugReports: https://github.com/hrbrmstr/msgxtractr/issues
 SystemRequirements: C++11
-NeedsCompilation: Yes
+NeedsCompilation: yes
+Copyright: file inst/COPYRIGHTS
 License: AGPL
 Suggests:
     testthat,
