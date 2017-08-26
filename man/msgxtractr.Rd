@@ -6,7 +6,9 @@
 \alias{msgxtractr-package}
 \title{Read Outlook '.msg' Files}
 \description{
-Read Outlook '.msg' Files
+'Microsoft' 'Outlook' messages can be saved in '.msg' files. Tools are provided that
+enable extraction of metadata, envelope, headers, body and attachments from these
+files.
 }
 \author{
 Bob Rudis (bob@rud.is)
