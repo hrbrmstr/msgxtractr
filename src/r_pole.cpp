@@ -36,6 +36,8 @@ List visit(POLE::Storage* storage, std::string path) {
     std::string name = *it;
     std::string fullname = path + name;
 
+    // std::cout << "  Opening Stream " ;
+
     POLE::Stream* ss = new POLE::Stream(storage, fullname);
 
     if (!(storage->isDirectory(fullname))) {
@@ -92,6 +94,7 @@ List visit(POLE::Storage* storage, std::string path) {
 
     }
 
+    // std::cout << "- Deleting Stream" << std::endl;
     delete ss;
 
     if (storage->isDirectory(fullname)) {
@@ -129,14 +132,34 @@ List visit(POLE::Storage* storage, std::string path) {
 // [[Rcpp::export]]
 List int_read_msg(std::string path) {
 
+  // std::cout << "Opening File" << std::endl ;
+
   POLE::Storage* storage = new POLE::Storage(path.c_str());
 
   storage->open();
 
   if (storage->result() == POLE::Storage::Ok) {
-    return(visit(storage, "/"));
+
+    List l = visit(storage, "/");
+
+    if (storage) {
+      // std::cout << "Closing File" << std::endl << std::endl;
+      storage->close();
+      delete storage;
+    }
+
+    return(l);
+
   } else {
+
+    if (storage) {
+      // std::cout << "Closing File" << std::endl << std::endl;
+      storage->close();
+      delete storage;
+    }
+
     return(wrap(NULL));
+
   }
 
 }
