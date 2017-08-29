@@ -12,7 +12,7 @@ output: rmarkdown::github_document
 The following functions are implemented:
 
 - `read_msg`:	Read in an Outlook '.msg' file
-- `save_attachments`:	Save all attachments from a 'msg" object
+- `save_attachments`:	Save all attachments from a 'msg' object
 
 ### Installation
 

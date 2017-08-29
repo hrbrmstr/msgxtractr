@@ -8,7 +8,7 @@
 The following functions are implemented:
 
 -   `read_msg`: Read in an Outlook '.msg' file
--   `save_attachments`: Save all attachments from a 'msg" object
+-   `save_attachments`: Save all attachments from a 'msg' object
 
 ### Installation
 
@@ -226,7 +226,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Mon Aug 28 21:06:31 2017"
+    ## [1] "Mon Aug 28 21:55:44 2017"
 
 ``` r
 test_dir("tests/")
