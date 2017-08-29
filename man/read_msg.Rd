@@ -10,7 +10,7 @@ read_msg(path)
 \item{path}{path to '.msg' file}
 }
 \value{
-a \code{list} of extracted fields and metadata
+a \code{list} of extracted fields and metadata with class "\code{msg}"
 }
 \description{
 Read in an Outlook '.msg' file

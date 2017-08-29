@@ -2,7 +2,7 @@
 #'
 #' @md
 #' @param path path to '.msg' file
-#' @return a `list` of extracted fields and metadata
+#' @return a `list` of extracted fields and metadata with class "`msg`"
 #' @export
 #' @examples
 #' read_msg(system.file("extdata/unicode.msg", package="msgxtractr"))
@@ -29,6 +29,10 @@ read_msg <- function(path) {
     attachments = process_attachments(x),
     display_envelope = process_envelope(x),
     times = process_times(x)
-  )
+  ) -> res
+
+  class(res) <- "msg"
+
+  res
 
 }

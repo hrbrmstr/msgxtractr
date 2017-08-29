@@ -8,6 +8,7 @@
 The following functions are implemented:
 
 -   `read_msg`: Read in an Outlook '.msg' file
+-   `save_attachments`: Save all attachments from a 'msg" object
 
 ### Installation
 
@@ -24,13 +25,13 @@ library(msgxtractr)
 packageVersion("msgxtractr")
 ```
 
-    ## [1] '0.2.0'
+    ## [1] '0.2.1'
 
 ``` r
-print(str(read_msg(system.file("extdata/unicode.msg", package="msgxtractr"))))
+str(msg1 <- read_msg(system.file("extdata/unicode.msg", package="msgxtractr")))
 ```
 
-    ## List of 7
+    ## List of 8
     ##  $ headers         :Classes 'tbl_df', 'tbl' and 'data.frame':    1 obs. of  18 variables:
     ##   ..$ Return-path               : chr "<brizhou@gmail.com>"
     ##   ..$ Received                  :List of 1
@@ -64,7 +65,9 @@ print(str(read_msg(system.file("extdata/unicode.msg", package="msgxtractr"))))
     ##   .. ..$ address_type : chr "SMTP"
     ##   .. ..$ email_address: chr "brizhou@gmail.com"
     ##  $ subject         : chr "Test for TIF files"
-    ##  $ body            : chr "This is a test email to experiment with the MS Outlook MSG Extractor\r\n\r\n\r\n-- \r\n\r\n\r\nKind regards\r\n"| __truncated__
+    ##  $ body            :List of 2
+    ##   ..$ text: chr "This is a test email to experiment with the MS Outlook MSG Extractor\r\n\r\n\r\n-- \r\n\r\n\r\nKind regards\r\n"| __truncated__
+    ##   ..$ html: NULL
     ##  $ attachments     :List of 2
     ##   ..$ :List of 4
     ##   .. ..$ filename     : chr "importOl.tif"
@@ -79,7 +82,130 @@ print(str(read_msg(system.file("extdata/unicode.msg", package="msgxtractr"))))
     ##  $ display_envelope:List of 2
     ##   ..$ display_cc: chr "Brian Zhou"
     ##   ..$ display_to: chr "brianzhou@me.com"
-    ## NULL
+    ##  $ times           :List of 3
+    ##   ..$ creation_time: NULL
+    ##   ..$ last_mod_time: NULL
+    ##   ..$ last_mod_name: NULL
+    ##  - attr(*, "class")= chr "msg"
+
+``` r
+str(msg2 <- read_msg(system.file("extdata/TestMessage-ansi.msg", package="msgxtractr")))
+```
+
+    ## List of 8
+    ##  $ headers         : NULL
+    ##  $ sender          : list()
+    ##  $ recipients      :List of 3
+    ##   ..$ :List of 3
+    ##   .. ..$ display_name : NULL
+    ##   .. ..$ address_type : NULL
+    ##   .. ..$ email_address: NULL
+    ##   ..$ :List of 3
+    ##   .. ..$ display_name : NULL
+    ##   .. ..$ address_type : NULL
+    ##   .. ..$ email_address: NULL
+    ##   ..$ :List of 3
+    ##   .. ..$ display_name : NULL
+    ##   .. ..$ address_type : NULL
+    ##   .. ..$ email_address: NULL
+    ##  $ subject         : NULL
+    ##  $ body            :List of 2
+    ##   ..$ text: NULL
+    ##   ..$ html: NULL
+    ##  $ attachments     :List of 1
+    ##   ..$ :List of 4
+    ##   .. ..$ filename     : NULL
+    ##   .. ..$ long_filename: NULL
+    ##   .. ..$ mime         : NULL
+    ##   .. ..$ content      : raw [1:10934] 50 4b 03 04 ...
+    ##  $ display_envelope: list()
+    ##  $ times           :List of 3
+    ##   ..$ creation_time: NULL
+    ##   ..$ last_mod_time: NULL
+    ##   ..$ last_mod_name: NULL
+    ##  - attr(*, "class")= chr "msg"
+
+``` r
+str(msg3 <- read_msg(system.file("extdata/TestMessage-default.msg", package="msgxtractr")))
+```
+
+    ## List of 8
+    ##  $ headers         : NULL
+    ##  $ sender          :List of 2
+    ##   ..$ sender_email: chr "sender@example.com"
+    ##   ..$ sender_name : chr "Sender"
+    ##  $ recipients      :List of 3
+    ##   ..$ :List of 3
+    ##   .. ..$ display_name : NULL
+    ##   .. ..$ address_type : chr "SMTP"
+    ##   .. ..$ email_address: chr "recipient1@example.com"
+    ##   ..$ :List of 3
+    ##   .. ..$ display_name : NULL
+    ##   .. ..$ address_type : chr "SMTP"
+    ##   .. ..$ email_address: chr "cc1@example.com"
+    ##   ..$ :List of 3
+    ##   .. ..$ display_name : NULL
+    ##   .. ..$ address_type : chr "SMTP"
+    ##   .. ..$ email_address: chr "recipient2@example.com"
+    ##  $ subject         : chr "New Message!"
+    ##  $ body            :List of 2
+    ##   ..$ text: chr "This is some bold html!"
+    ##   ..$ html: chr "<HTML><HEAD>\r\n<META content=\"text/html; charset=UTF-8\" http-equiv=Content-Type>\r\n<META name=GENERATOR con"| __truncated__
+    ##  $ attachments     :List of 1
+    ##   ..$ :List of 4
+    ##   .. ..$ filename     : chr "TestAttachment1.xlsx"
+    ##   .. ..$ long_filename: chr "TestAttachment1.xlsx"
+    ##   .. ..$ mime         : NULL
+    ##   .. ..$ content      : raw [1:10934] 50 4b 03 04 ...
+    ##  $ display_envelope:List of 2
+    ##   ..$ display_cc: chr "CC1"
+    ##   ..$ display_to: chr "Recipient 1; Recipient 2"
+    ##  $ times           :List of 3
+    ##   ..$ creation_time: NULL
+    ##   ..$ last_mod_time: NULL
+    ##   ..$ last_mod_name: NULL
+    ##  - attr(*, "class")= chr "msg"
+
+``` r
+str(msg4 <- read_msg(system.file("extdata/TestMessage-unicode.msg", package="msgxtractr")))
+```
+
+    ## List of 8
+    ##  $ headers         : NULL
+    ##  $ sender          :List of 2
+    ##   ..$ sender_email: chr "sender@example.com"
+    ##   ..$ sender_name : chr "Sender"
+    ##  $ recipients      :List of 3
+    ##   ..$ :List of 3
+    ##   .. ..$ display_name : NULL
+    ##   .. ..$ address_type : chr "SMTP"
+    ##   .. ..$ email_address: chr "recipient1@example.com"
+    ##   ..$ :List of 3
+    ##   .. ..$ display_name : NULL
+    ##   .. ..$ address_type : chr "SMTP"
+    ##   .. ..$ email_address: chr "cc1@example.com"
+    ##   ..$ :List of 3
+    ##   .. ..$ display_name : NULL
+    ##   .. ..$ address_type : chr "SMTP"
+    ##   .. ..$ email_address: chr "recipient2@example.com"
+    ##  $ subject         : chr "New Message!"
+    ##  $ body            :List of 2
+    ##   ..$ text: chr "This is some bold html!"
+    ##   ..$ html: chr "<HTML><HEAD>\r\n<META content=\"text/html; charset=UTF-8\" http-equiv=Content-Type>\r\n<META name=GENERATOR con"| __truncated__
+    ##  $ attachments     :List of 1
+    ##   ..$ :List of 4
+    ##   .. ..$ filename     : chr "TestAttachment1.xlsx"
+    ##   .. ..$ long_filename: chr "TestAttachment1.xlsx"
+    ##   .. ..$ mime         : NULL
+    ##   .. ..$ content      : raw [1:10934] 50 4b 03 04 ...
+    ##  $ display_envelope:List of 2
+    ##   ..$ display_cc: chr "CC1"
+    ##   ..$ display_to: chr "Recipient 1; Recipient 2"
+    ##  $ times           :List of 3
+    ##   ..$ creation_time: NULL
+    ##   ..$ last_mod_time: NULL
+    ##   ..$ last_mod_name: NULL
+    ##  - attr(*, "class")= chr "msg"
 
 ### Test Results
 
@@ -90,14 +216,14 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Sat Aug 26 06:07:23 2017"
+    ## [1] "Mon Aug 28 20:51:32 2017"
 
 ``` r
 test_dir("tests/")
 ```
 
-    ## testthat results ========================================================================================================
-    ## OK: 3 SKIPPED: 0 FAILED: 0
+    ## ..........testthat results ========================================================================================================
+    ## OK: 4 SKIPPED: 0 FAILED: 0
     ## 
     ## DONE ===================================================================================================================
 

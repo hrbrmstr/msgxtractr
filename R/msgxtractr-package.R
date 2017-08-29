@@ -7,6 +7,7 @@
 #' @name msgxtractr
 #' @docType package
 #' @author Bob Rudis (bob@@rud.is)
+#' @importFrom scales comma
 #' @useDynLib msgxtractr, .registration=TRUE
 #' @importFrom Rcpp sourceCpp
 NULL
