@@ -89,6 +89,16 @@ str(msg1 <- read_msg(system.file("extdata/unicode.msg", package="msgxtractr")))
     ##  - attr(*, "class")= chr "msg"
 
 ``` r
+print(msg1)
+```
+
+    ## Mon, 18 Nov 2013 10:26:24 +0200
+    ## From: Brian Zhou <brizhou@gmail.com>
+    ## To: brianzhou@me.com
+    ## Subject: Test for TIF files
+    ## Attachments: 2
+
+``` r
 str(msg2 <- read_msg(system.file("extdata/TestMessage-ansi.msg", package="msgxtractr")))
 ```
 
@@ -216,7 +226,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Mon Aug 28 20:51:32 2017"
+    ## [1] "Mon Aug 28 21:06:31 2017"
 
 ``` r
 test_dir("tests/")

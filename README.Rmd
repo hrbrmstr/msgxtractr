@@ -34,6 +34,8 @@ packageVersion("msgxtractr")
 
 str(msg1 <- read_msg(system.file("extdata/unicode.msg", package="msgxtractr")))
 
+print(msg1)
+
 str(msg2 <- read_msg(system.file("extdata/TestMessage-ansi.msg", package="msgxtractr")))
 
 str(msg3 <- read_msg(system.file("extdata/TestMessage-default.msg", package="msgxtractr")))
