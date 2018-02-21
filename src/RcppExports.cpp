@@ -5,6 +5,28 @@
 
 using namespace Rcpp;
 
+// is_rtf
+bool is_rtf(RawVector v);
+RcppExport SEXP _msgxtractr_is_rtf(SEXP vSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< RawVector >::type v(vSEXP);
+    rcpp_result_gen = Rcpp::wrap(is_rtf(v));
+    return rcpp_result_gen;
+END_RCPP
+}
+// decode_rtf
+RawVector decode_rtf(RawVector v);
+RcppExport SEXP _msgxtractr_decode_rtf(SEXP vSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< RawVector >::type v(vSEXP);
+    rcpp_result_gen = Rcpp::wrap(decode_rtf(v));
+    return rcpp_result_gen;
+END_RCPP
+}
 // int_read_msg
 List int_read_msg(std::string path);
 RcppExport SEXP _msgxtractr_int_read_msg(SEXP pathSEXP) {
@@ -18,6 +40,8 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_msgxtractr_is_rtf", (DL_FUNC) &_msgxtractr_is_rtf, 1},
+    {"_msgxtractr_decode_rtf", (DL_FUNC) &_msgxtractr_decode_rtf, 1},
     {"_msgxtractr_int_read_msg", (DL_FUNC) &_msgxtractr_int_read_msg, 1},
     {NULL, NULL, 0}
 };

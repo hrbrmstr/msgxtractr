@@ -33,6 +33,11 @@ read_msg <- function(path) {
 
   class(res) <- "msg"
 
+  # list(
+  #   orig = x,
+  #   res = res
+  # )
+
   res
 
 }

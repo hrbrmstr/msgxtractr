@@ -4,12 +4,15 @@
 \alias{save_attachments}
 \title{Save all attachments from a 'msg" object}
 \usage{
-save_attachments(msg_obj, path = getwd(), quiet = FALSE)
+save_attachments(msg_obj, path = getwd(), use_short = TRUE, quiet = FALSE)
 }
 \arguments{
 \item{msg_obj}{a message object read in with \code{read_msg()}}
 
 \item{path}{directory path to save attachments in (defaults to current directory)}
+
+\item{use_short}{if \code{TRUE} then use the "short" filename from the parsed message,
+otherwise use the "long" filename (if it exists)}
 
 \item{quiet}{if \code{TRUE} then no informative messages will be displayed}
 }
