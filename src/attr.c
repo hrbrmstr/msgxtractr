@@ -29,6 +29,8 @@ extern "C" {
 
 #include "common.h"
 
+#include <string.h>
+
 #include "alloc.h"
 #include "attr.h"
 #include "tnef_types.h"
@@ -193,7 +195,7 @@ attr_free (Attr* attr)
     }
 }
 
-
+
 /* Validate the checksum against attr.  The checksum is the sum of all the
    bytes in the attribute data modulo 65536 */
 static int
@@ -237,21 +239,21 @@ attr_read (FILE* in)
     uint16 checksum;
 
     Attr *attr = CHECKED_XCALLOC (Attr, 1);
-    
+
     attr->lvl_type = geti8(in);
-    
+
     assert ((attr->lvl_type == LVL_MESSAGE)
 	    || (attr->lvl_type == LVL_ATTACHMENT));
-    
+
     type_and_name = geti32(in);
-    
+
     attr->type = (type_and_name >> 16);
     attr->name = ((type_and_name << 16) >> 16);
     attr->len = geti32(in);
     attr->buf = CHECKED_XCALLOC (unsigned char, attr->len);
-    
+
     (void)getbuf(in, attr->buf, attr->len);
-    
+
     checksum = geti16(in);
     if (!check_checksum(attr, checksum))
     {
@@ -267,7 +269,7 @@ attr_read (FILE* in)
 	    exit( 1 );
 	}
     }
-    
+
     if (DEBUG_ON) attr_dump (attr);
 
     return attr;
