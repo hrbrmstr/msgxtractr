@@ -11,7 +11,7 @@
 #' read_msg(system.file("extdata/TestMessage-unicode.msg", package="msgxtractr"))
 read_msg <- function(path) {
 
-  path <- path.expand(path)
+  path <- normalizePath(path.expand(path))
   if (!file.exists(path)) stop("File not found.", call.=FALSE)
 
   x <- int_read_msg(path)
