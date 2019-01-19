@@ -4,7 +4,8 @@
 \alias{save_attachments}
 \title{Save all attachments from a 'msg" object}
 \usage{
-save_attachments(msg_obj, path = getwd(), use_short = TRUE, quiet = FALSE)
+save_attachments(msg_obj, path = getwd(), use_short = TRUE,
+  quiet = FALSE)
 }
 \arguments{
 \item{msg_obj}{a message object read in with \code{read_msg()}}

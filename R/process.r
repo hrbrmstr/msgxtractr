@@ -77,7 +77,9 @@ process_envelope <- function(x) {
 process_headers <- function(x) {
   x <- unlist(unname(x[grep(msg_fields$TransportMessageHeaders, names(x), value=TRUE)]))
   if (!is.null(x)) {
-    x <- read.dcf(textConnection(x), all=TRUE)
+    txc <- textConnection(x)
+    on.exit(close(txc))
+    x <- read.dcf(txc, all=TRUE)
     class(x) <- c("tbl_df", "tbl", "data.frame")
   }
   x

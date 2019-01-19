@@ -27,5 +27,5 @@ Depends:
 Imports:
     Rcpp,
     scales
-RoxygenNote: 6.0.1.9000
+RoxygenNote: 6.1.1
 LinkingTo: Rcpp
