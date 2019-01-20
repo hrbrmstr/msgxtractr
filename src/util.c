@@ -58,7 +58,7 @@ getbuf (FILE *fp, unsigned char buf[], size_t n)
     if (fread (buf, 1, n, fp) != n)
     {
 	perror ("Unexpected end of input");
-	exit (1);
+	//exit (1);
     }
     return buf;
 }
@@ -109,9 +109,9 @@ unicode_to_utf8 (size_t len, unsigned char* buf)
 	    utf8[j++] = 0x80 | ((c & 0x003f) >> 0);
 	}
     }
-    
+
     utf8[j] = '\0';
-    
+
     return utf8;
 }
 

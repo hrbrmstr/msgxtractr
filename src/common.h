@@ -48,8 +48,8 @@ extern "C" {
 extern int strcmp (const char *, const char *);
 extern char *strcpy (char *, const char *);
 extern char *strcat (char *, const char *);
-extern void abort (void);
-extern void exit (int);
+// extern void abort (void);
+// extern void exit (int);
 extern void* memset (void* ptr, int c, size_t size);
 extern void* malloc (size_t size);
 extern void *memmove (void *, const void*, size_t);

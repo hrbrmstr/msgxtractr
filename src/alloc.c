@@ -47,12 +47,12 @@ get_alloc_limit()
 static void
 alloc_limit_failure (char *fn_name, size_t size)
 {
-    fprintf (stderr, 
-             "%s: Maximum allocation size exceeded "
-             "(maxsize = %lu; size = %lu).\n",
-             fn_name,
-             (unsigned long)alloc_limit, 
-             (unsigned long)size);
+//    fprintf (stderr,
+//             "%s: Maximum allocation size exceeded "
+//             "(maxsize = %lu; size = %lu).\n",
+//             fn_name,
+//             (unsigned long)alloc_limit,
+//             (unsigned long)size);
 }
 
 void
@@ -61,7 +61,7 @@ alloc_limit_assert (char *fn_name, size_t size)
     if (alloc_limit && size > alloc_limit)
     {
 	alloc_limit_failure (fn_name, size);
-	exit (-1);
+	//exit (-1);
     }
 }
 
@@ -70,11 +70,11 @@ void*
 xmalloc (size_t size)
 {
     void *ptr = malloc (size);
-    if (!ptr 
+    if (!ptr
         && (size != 0))         /* some libc don't like size == 0 */
     {
         perror ("xmalloc: Memory allocation failure");
-        abort();
+        //abort();
     }
     return ptr;
 }

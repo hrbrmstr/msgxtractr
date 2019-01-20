@@ -13,8 +13,8 @@ using namespace Rcpp;
 
 #include "alloc.h"
 #include "util.h"
-#include "tnef.h"
-#include "rtf.h"
+// #include "tnef.h"
+// #include "rtf.h"
 
 std::string MSG_UTF16LE = std::string("001F");
 std::string MSG_BINARY = std::string("0102");
@@ -25,6 +25,9 @@ unsigned int get_int_32(unsigned char *p){
   return (unsigned int)((unsigned char)(p)[0] + ((unsigned char)(p)[1]<<8) + ((unsigned char)(p)[2]<<16) + ((unsigned char)(p)[3]<<24));
 }
 
+//' Is a sequence of raw bytes an RTF document?
+//'
+//' @param v a raw vector
 //' @export
 // [[Rcpp::export]]
 bool is_rtf(RawVector v) {
@@ -168,11 +171,14 @@ RawVector decompress_rtf_data(unsigned char *src, size_t lenc, size_t lenu) {
 
 }
 
+//' Decode RTF from a raw vector
+//'
+//' @param v a raw vector
 //' @export
 // [[Rcpp::export]]
 RawVector decode_rtf(RawVector v) {
 
-  static const unsigned int rtf_uncompressed_magic = 0x414c454d;
+//  static const unsigned int rtf_uncompressed_magic = 0x414c454d;
   static const unsigned int rtf_compressed_magic =   0x75465a4c;
 
   size_t compr_size = 0L;
@@ -272,7 +278,7 @@ List visit(POLE::Storage* storage, std::string path) {
 
         } else {
 
-          std::cout << fullname.c_str() << std::endl;
+          //std::cout << fullname.c_str() << std::endl;
 
         }
 
