@@ -31,16 +31,45 @@ extern "C" {
 #  include "config.h"
 #endif /* HAVE_CONFIG_H */
 
+#ifdef WIN64
+#define IS_WINDOWS
+#elif defined WIN32
+#define IS_WINDOWS
+#endif
+
+
+#ifdef __APPLE__
+typedef signed char             int8_t;
+typedef unsigned char           uint8_t;
+typedef signed short int        int16_t;
+typedef unsigned short int      uint16_t;
+typedef signed int              int32_t;
+typedef unsigned int            uint32_t;
+typedef unsigned long long      uint64_t;
+typedef long long               int64_t;
+#endif
+
+#ifdef IS_WINDOWS
+typedef signed char             int8_t;
+typedef unsigned char           uint8_t;
+typedef signed short int        int16_t;
+typedef unsigned short int      uint16_t;
+typedef signed int              int32_t;
+typedef unsigned int            uint32_t;
+typedef unsigned long long      uint64_t;
+typedef long long               int64_t;
+#endif
+
 #include "common.h"
 
-extern uint32 GETINT32(unsigned char*p);
-extern uint16 GETINT16(unsigned char*p);
-extern uint8 GETINT8(unsigned char*p);
+extern uint32_t GETINT32(unsigned char*p);
+extern uint16_t GETINT16(unsigned char*p);
+extern uint8_t GETINT8(unsigned char*p);
 
 extern unsigned char* getbuf (FILE *fp, unsigned char buf[], size_t n);
-extern uint32 geti32(FILE *fp);
-extern uint16 geti16(FILE *fp);
-extern uint8 geti8(FILE *fp);
+extern uint32_t geti32(FILE *fp);
+extern uint16_t geti16(FILE *fp);
+extern uint8_t geti8(FILE *fp);
 
 extern unsigned char* unicode_to_utf8 (size_t len, unsigned char*buf);
 

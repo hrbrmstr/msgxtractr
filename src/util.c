@@ -34,7 +34,7 @@ extern "C" {
 #include "options.h"
 
 /* Needed to transform char buffers into little endian numbers */
-uint32 GETINT32(unsigned char *p)
+uint32_t GETINT32(unsigned char *p)
 {
     return (uint32)((uint8)(p)[0]           \
 		    +((uint8)(p)[1]<<8)     \
@@ -42,7 +42,7 @@ uint32 GETINT32(unsigned char *p)
 		    +((uint8)(p)[3]<<24));
 }
 
-uint16 GETINT16 (unsigned char* p)
+uint16_t GETINT16 (unsigned char* p)
 {
     return (uint16)((uint8)(p)[0]+((uint8)(p)[1]<<8));
 }
@@ -63,13 +63,13 @@ getbuf (FILE *fp, unsigned char buf[], size_t n)
     return buf;
 }
 
-uint32
+uint32_t
 geti32 (FILE *fp)
 {
     unsigned char buf[4];
     return (uint32)GETINT32(getbuf(fp, buf, 4));
 }
-uint16
+uint16_t
 geti16 (FILE *fp)
 {
     unsigned char buf[2];
