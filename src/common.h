@@ -33,6 +33,7 @@ extern "C" {
 
 #include <assert.h>
 #include <stdio.h>
+#include <stdint.h>
 
 #if STDC_HEADERS
 #  include <stdarg.h>

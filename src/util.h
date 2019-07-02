@@ -37,7 +37,6 @@ extern "C" {
 #define IS_WINDOWS
 #endif
 
-
 #ifdef __APPLE__
 typedef signed char             int8_t;
 typedef unsigned char           uint8_t;
