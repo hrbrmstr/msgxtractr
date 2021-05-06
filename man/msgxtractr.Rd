@@ -3,7 +3,6 @@
 \docType{package}
 \name{msgxtractr}
 \alias{msgxtractr}
-\alias{msgxtractr-package}
 \title{Read Outlook '.msg' Files}
 \description{
 'Microsoft' 'Outlook' messages can be saved in '.msg' files. Tools are provided that

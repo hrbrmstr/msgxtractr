@@ -1,8 +1,8 @@
 Package: msgxtractr
 Type: Package
 Title: Read Outlook '.msg' Files
-Version: 0.2.1
-Date: 2017-08-23
+Version: 0.3.0
+Date: 2020-05-06
 Authors@R: c(
       person("Bob", "Rudis", email = "bob@rud.is", role = c("aut", "cre")),
       person("Ariya", "Hidayat", email = "ariya@kde.org", role = c("ctb", "cph"), comment = "POLE library"),
@@ -23,9 +23,10 @@ Suggests:
     testthat,
     covr
 Depends:
-    R (>= 3.2.0)
+    R (>= 3.5.0)
 Imports:
     Rcpp,
-    scales
-RoxygenNote: 6.1.1
+    scales,
+    tibble
+RoxygenNote: 7.1.1
 LinkingTo: Rcpp

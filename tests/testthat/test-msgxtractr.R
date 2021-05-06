@@ -34,4 +34,13 @@ test_that("we can do something", {
 
   expect_equal(nrow(mail_df), 100)
 
+  do.call(
+    rbind.data.frame,
+    lapply(1:10, function(.x) {
+      tidy_msg(read_msg(system.file("extdata/unicode.msg", package="msgxtractr")))
+    })
+  ) -> res
+
+  expect_equal(nrow(res), 10)
+
 })

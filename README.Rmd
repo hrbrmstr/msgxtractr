@@ -13,6 +13,7 @@ The following functions are implemented:
 
 - `read_msg`:	Read in an Outlook '.msg' file
 - `save_attachments`:	Save all attachments from a 'msg' object
+- `tidy_msg`:	Turn a 'msg' object into a 'tibble'
 
 ### Installation
 
@@ -29,7 +30,7 @@ options(width=120)
 ```{r message=FALSE, warning=FALSE, error=FALSE}
 library(msgxtractr)
 
-# current verison
+# current version
 packageVersion("msgxtractr")
 
 str(msg1 <- read_msg(system.file("extdata/unicode.msg", package="msgxtractr")))
@@ -41,17 +42,11 @@ str(msg2 <- read_msg(system.file("extdata/TestMessage-ansi.msg", package="msgxtr
 str(msg3 <- read_msg(system.file("extdata/TestMessage-default.msg", package="msgxtractr")))
 
 str(msg4 <- read_msg(system.file("extdata/TestMessage-unicode.msg", package="msgxtractr")))
-```
 
-### Test Results
-
-```{r message=FALSE, warning=FALSE, error=FALSE}
-library(msgxtractr)
-library(testthat)
-
-date()
-
-test_dir("tests/")
+str(tidy_msg(msg1), 2)
+str(tidy_msg(msg2), 2)
+str(tidy_msg(msg3), 2)
+str(tidy_msg(msg4), 2)
 ```
 
 ### Code of Conduct

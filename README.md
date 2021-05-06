@@ -1,14 +1,21 @@
 
-[![Build Status](https://travis-ci.org/hrbrmstr/msgxtractr.svg?branch=master)](https://travis-ci.org/hrbrmstr/msgxtractr) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/hrbrmstr/msgxtractr?branch=master&svg=true)](https://ci.appveyor.com/project/hrbrmstr/msgxtractr) [![codecov](https://codecov.io/gh/hrbrmstr/msgxtractr/branch/master/graph/badge.svg)](https://codecov.io/gh/hrbrmstr/msgxtractr)
+[![Build
+Status](https://travis-ci.org/hrbrmstr/msgxtractr.svg?branch=master)](https://travis-ci.org/hrbrmstr/msgxtractr)
+[![AppVeyor Build
+Status](https://ci.appveyor.com/api/projects/status/github/hrbrmstr/msgxtractr?branch=master&svg=true)](https://ci.appveyor.com/project/hrbrmstr/msgxtractr)
+[![codecov](https://codecov.io/gh/hrbrmstr/msgxtractr/branch/master/graph/badge.svg)](https://codecov.io/gh/hrbrmstr/msgxtractr)
 
-`msgxtractr` : Read Outlook '.msg' Files
+`msgxtractr` : Read Outlook ‘.msg’ Files
 
-'Microsoft' 'Outlook' messages can be saved in '.msg' files. Tools are provided that enable extraction of metadata, envelope, headers, body and attachments from these files.
+‘Microsoft’ ‘Outlook’ messages can be saved in ‘.msg’ files. Tools are
+provided that enable extraction of metadata, envelope, headers, body and
+attachments from these files.
 
 The following functions are implemented:
 
--   `read_msg`: Read in an Outlook '.msg' file
--   `save_attachments`: Save all attachments from a 'msg' object
+-   `read_msg`: Read in an Outlook ‘.msg’ file
+-   `save_attachments`: Save all attachments from a ‘msg’ object
+-   `tidy_msg`: Turn a ‘msg’ object into a ‘tibble’
 
 ### Installation
 
@@ -21,18 +28,18 @@ devtools::install_github("hrbrmstr/msgxtractr")
 ``` r
 library(msgxtractr)
 
-# current verison
+# current version
 packageVersion("msgxtractr")
 ```
 
-    ## [1] '0.2.1'
+    ## [1] '0.3.0'
 
 ``` r
 str(msg1 <- read_msg(system.file("extdata/unicode.msg", package="msgxtractr")))
 ```
 
     ## List of 8
-    ##  $ headers         :Classes 'tbl_df', 'tbl' and 'data.frame':    1 obs. of  18 variables:
+    ##  $ headers         : tibble [1 × 18] (S3: tbl_df/tbl/data.frame)
     ##   ..$ Return-path               : chr "<brizhou@gmail.com>"
     ##   ..$ Received                  :List of 1
     ##   .. ..$ : chr [1:4] "from st11p00mm-smtpin007.mac.com ([17.172.84.240])\nby ms06561.mac.com (Oracle Communications Messaging Server "| __truncated__ "from mail-vc0-f182.google.com ([209.85.220.182])\nby st11p00mm-smtpin007.mac.com\n(Oracle Communications Messag"| __truncated__ "by mail-vc0-f182.google.com with SMTP id ie18so3484487vcb.13 for\n<brianzhou@me.com>; Mon, 18 Nov 2013 00:26:25 -0800 (PST)" "by 10.58.207.196 with HTTP; Mon, 18 Nov 2013 00:26:24 -0800 (PST)"
@@ -217,26 +224,58 @@ str(msg4 <- read_msg(system.file("extdata/TestMessage-unicode.msg", package="msg
     ##   ..$ last_mod_name: NULL
     ##  - attr(*, "class")= chr "msg"
 
-### Test Results
-
 ``` r
-library(msgxtractr)
-library(testthat)
-
-date()
+str(tidy_msg(msg1), 2)
 ```
 
-    ## [1] "Mon Aug 28 21:55:44 2017"
+    ## tibble [1 × 8] (S3: tbl_df/tbl/data.frame)
+    ##  $ headers         :List of 1
+    ##  $ sender          :List of 1
+    ##  $ recipients      :List of 1
+    ##  $ subject         : chr "Test for TIF files"
+    ##  $ body            :List of 1
+    ##  $ attachments     :List of 1
+    ##  $ display_envelope:List of 1
+    ##  $ times           :List of 1
 
 ``` r
-test_dir("tests/")
+str(tidy_msg(msg2), 2)
 ```
 
-    ## ..........testthat results ========================================================================================================
-    ## OK: 4 SKIPPED: 0 FAILED: 0
-    ## 
-    ## DONE ===================================================================================================================
+    ## tibble [1 × 4] (S3: tbl_df/tbl/data.frame)
+    ##  $ recipients :List of 1
+    ##  $ body       :List of 1
+    ##  $ attachments:List of 1
+    ##  $ times      :List of 1
+
+``` r
+str(tidy_msg(msg3), 2)
+```
+
+    ## tibble [1 × 7] (S3: tbl_df/tbl/data.frame)
+    ##  $ sender          :List of 1
+    ##  $ recipients      :List of 1
+    ##  $ subject         : chr "New Message!"
+    ##  $ body            :List of 1
+    ##  $ attachments     :List of 1
+    ##  $ display_envelope:List of 1
+    ##  $ times           :List of 1
+
+``` r
+str(tidy_msg(msg4), 2)
+```
+
+    ## tibble [1 × 7] (S3: tbl_df/tbl/data.frame)
+    ##  $ sender          :List of 1
+    ##  $ recipients      :List of 1
+    ##  $ subject         : chr "New Message!"
+    ##  $ body            :List of 1
+    ##  $ attachments     :List of 1
+    ##  $ display_envelope:List of 1
+    ##  $ times           :List of 1
 
 ### Code of Conduct
 
-Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a [Contributor Code of
+Conduct](CONDUCT.md). By participating in this project you agree to
+abide by its terms.
